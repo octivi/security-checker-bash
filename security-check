@@ -1,0 +1,22 @@
+#!/bin/bash
+# Title       security-check
+#
+# Description Simple CLI tool for Sensio Security Advisories Checker. 
+#             Fits great with your Continous Integration as it returns exit code 1 if security check fails.
+#             Usage: security-check [composer_lock_path] [sensio_checker_url]
+#
+# Author      Antoni Orfin <aorfin@imagin.pl>
+# Copyright   (C) 2014  IMAGIN Sp. z o.o.
+
+COMPOSER=${1:-composer.lock}
+CHECK_URL=${2:-https://security.sensiolabs.org/check_lock}
+
+RESPONSE=$(curl -iL -s -S -H "Accept: text/plain" $CHECK_URL -F lock=@$COMPOSER)
+
+if [[ ! $RESPONSE == *X-Alerts:\ 0* ]]
+then
+  echo "$RESPONSE";
+  exit 1
+fi
+
+exit 0
