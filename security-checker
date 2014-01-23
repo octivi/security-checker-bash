@@ -1,9 +1,9 @@
 #!/bin/bash
-# Title       security-check
+# Title       security-checker
 #
 # Description Simple CLI tool for Sensio Security Advisories Checker. 
 #             Fits great with your Continous Integration as it returns exit code 1 if security check fails.
-#             Usage: security-check [composer_lock_path] [sensio_checker_url]
+#             Usage: security-checker [composer_lock_path] [sensio_checker_url]
 #
 # Author      Antoni Orfin <aorfin@imagin.pl>
 # Copyright   (C) 2014  IMAGIN Sp. z o.o.
